@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devicewidth,initial-scale=1,maximum-scale=1, userscalable=no">
+    <title>wust.edu.cn</title>
+
+    <style>
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px;
+            width: 200px;
+            height: 100%;
+            background-color: #2c3e50;
+            color: white;
+            padding-top: 60px;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        #sidebar a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+
+        #sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        #menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #2c3e50;
+            z-index: 1001;
+        }
+
+        /* 遮罩层样式 */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 998;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img1 {
+            width: 500px;
+            height: auto;
+            display: block;
+            margin: 0px auto;
+        }
+
+        .title {
+            text-align: right;
+            color: black;
+        }
+
+        .title_1 {
+            text-align: center;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            padding: 30px;
+            background-color: whitesmoke;
+            box-shadow: 0 0 30px gray;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 300px;
+            text-align: center;
+        }
+
+        .textbox {
+            padding: 10px;
+            margin: 30px 0px;
+            width: 100%;
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .textbox input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .textbox:focus-within {
+            border-color: blue;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: blueviolet;
+        }
+
+        .notice {
+            font-style: normal;
+            font-family: "宋体";
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        .notice ul li {
+            line-height: 2;
+        }
+
+        .Last {
+            text-align: right;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+
+<script>
+    let sidebarOpen = false;
+
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebarOpen = !sidebarOpen;
+        if (sidebarOpen) {
+            sidebar.style.left = '0';
+            overlay.style.display = 'block';
+        } else {
+            sidebar.style.left = '-200px';
+            overlay.style.display = 'none';
+        }
+    }
+
+    function closeMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebarOpen = false;
+        sidebar.style.left = '-200px';
+        overlay.style.display = 'none';
+    }
+</script>
+
+<body>
+
+    <!-- 侧边栏 -->
+    <div id="sidebar">
+        <a href="https://www.wust.edu.cn/">学校官网</a>
+        <a href="https://ysxy.wust.edu.cn/">研究生院</a>
+        <a href="https://yjsjygl.wust.edu.cn/home/stulogin">教务系统</a>
+        <a href="https://blog.csdn.net/weixin_58148440/article/details/147251757?spm=1001.2014.3001.5501">开发中心</a>
+    </div>
+
+    <!-- 覆盖层（遮罩） -->
+    <div id="overlay" onclick="closeMenu()"></div>
+
+    <!-- 菜单按钮 -->
+    <div id="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div>
+        <div>
+            <div>
+                <img src="1.png" alt="" class="img1">
+            </div>
+            <hr>
+            <div>
+                <h3 class="title">研究生期末考试答案汇总系统</h3>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="login">
+                <div>
+                    <h2 class="title_1">登录</h2>
+                </div>
+                <div>
+                    <form action="#" method="POST">
+                        <div class="textbox">
+                            <input type="text" placeholder="用户名" name="username" required maxlength="12">
+                        </div>
+                        <div class="textbox">
+                            <input type="password" placeholder="密码" name="password" required>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <input type="submit" value="确认">
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="notice">
+            <p>提示：</p>
+            <ul type="none">
+                <li>1.用户名为12位学号，密码与教务处系统一致；</li>
+                <li>2.首次登录时，建议修改密码；</li>
+                <li>3.<span>本网站一切信息均不对外开放</span>，遵守<strong>《中华人民共和国公共网络信息安全保护法》</strong>，严禁任何个人或集体窃取本平台内任何信息用于盈利。</li>
+            </ul>
+        </div>
+
+        <hr>
+        <p class="Last">All rights of interpretation are reserved by WUST-Skywalker.</p>
+        <div class="Last">
+            <a href="https://blog.csdn.net/weixin_58148440/article/details/147251757?spm=1001.2014.3001.5501">For
+                more</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
